@@ -1,0 +1,29 @@
+h1 {
+    font-size: 20px;
+    margin-left: 15px;
+    font-weight: 700;
+}
+
+
+.wizard-container {
+    width: 50%;
+    background-color: #e4f4eb;
+    height: auto;
+    min-height: 900px;
+    align-items: center;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: 20px;
+    min-width: 770px;
+  }
+
+  .step-button {
+      background-color: #3b5249;
+      border-radius: 3px;
+      padding: 10px 30px;
+      width: 140px;
+      height: 40px;
+      font-size: 16px;
+  }
