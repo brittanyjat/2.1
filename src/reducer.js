@@ -3,7 +3,6 @@ const initialState = {
     description: '',
     loan: null,
     monthlyMortgage: null,
-    recommendedRent: null,
     address: '',
     city: '',
     state: '',
@@ -24,6 +23,7 @@ const UPDATE_MORTGAGE = 'UPDATE_MORTGAGE';
 const UPDATE_DESIRED_RENT = 'UPDATE_DESIRED_RENT';
 
 function reducer(state = initialState, action) {
+    // console.log(state);
     switch (action.type) {
         case UPDATE_NAME:
             return { ...state, name: action.payload }

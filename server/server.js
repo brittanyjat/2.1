@@ -10,6 +10,9 @@ const { SESSION_SECRET, CONNECTION_STRING } = process.env;
 
 const checkAuth = require('./middlewares/checkAuth');
 
+const properties = require('./controllers/properties');
+const users = require('./controllers/users');
+
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -21,11 +24,18 @@ app.use(session({
 
 
 
+//---------- ENDPOINTS ---------- //
+
+// ===== properties ===== //
+
+app.post('/api/properties', checkAuth, properties.create);
 
 
+// ===== users ===== //
 
-
-
+app.post('/api/users', users.login);
+app.post('/api/register', users.register);
+app.post('/api/logout', users.logout);
 
 
 const port = 3001;
