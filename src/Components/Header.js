@@ -4,11 +4,7 @@ import axios from 'axios';
 import { withRouter } from 'react-router';
 
 class Header extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-
+    
     logout() {
         const { history } = this.props;
         axios.post('/api/logout').then(history.push('/'));

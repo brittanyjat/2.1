@@ -29,6 +29,7 @@ app.use(session({
 // ===== properties ===== //
 
 app.post('/api/properties', checkAuth, properties.create);
+app.get('/api/properties', properties.getProperties)
 
 
 // ===== users ===== //
@@ -39,5 +40,9 @@ app.post('/api/logout', users.logout);
 
 
 const port = 3001;
-massive(CONNECTION_STRING).then(db => { app.set('db', db); });
-app.listen(port, () => { console.log(`Now eavesdropping on ${port}`); });
+massive(CONNECTION_STRING).then(db => {
+    app.set('db', db);
+    app.listen(port, () => {
+        console.log(`Now eavesdropping on ${port}`);
+    });
+});

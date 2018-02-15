@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import authLogo from '../auth_logo.png';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { register, login } from '../reducer';
 
-export default class Dashboard extends Component {
+class Home extends Component {
     constructor() {
         super();
 
@@ -11,8 +12,6 @@ export default class Dashboard extends Component {
             password: ''
         };
         this.handleChange = this.handleChange.bind(this);
-        this.login = this.login.bind(this);
-        this.register = this.register.bind(this);
     }
 
     handleChange(prop, value) {
@@ -21,28 +20,10 @@ export default class Dashboard extends Component {
         });
     }
 
-    login() {
-        const { history } = this.props;
-        let body = {
-            username: this.state.username,
-            password: this.state.password
-        };
-        axios.post('/api/users', body).then(history.push('/dashboard'))
-    }
-
-    register() {
-        // const { history } = this.props;
-        let body = {
-            username: this.state.username,
-            password: this.state.password
-        };
-        axios.post('/api/register', body).then(res => { console.log(res) })
-    }
-
     render() {
         // console.log(this.props)
         // console.log(this.state)
-        // const { history } = this.props;
+        const { history, register, login } = this.props;
         const { username, password } = this.state;
         return (
             <div className='auth-dashboard'>
@@ -60,10 +41,13 @@ export default class Dashboard extends Component {
                     value={password}>
                 </input>
                 <div className='auth-button-container'>
-                    <button className='auth-button' onClick={() => this.login()}>Login</button>
-                    <button className='auth-button' onClick={() => this.register()}>Register</button>
+                    <button className='auth-button' onClick={() => login({ username, password }, history)}>Login</button>
+                    <button className='auth-button' onClick={() => register({ username, password }, history)}>Register</button>
                 </div>
             </div>
         )
     }
 }
+
+
+export default connect(state => state, { register, login })(Home);

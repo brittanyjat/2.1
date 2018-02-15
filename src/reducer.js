@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const initialState = {
     name: '',
     description: '',
@@ -8,7 +10,9 @@ const initialState = {
     state: '',
     zip: '',
     imageUrl: '',
-    desiredRent: 0
+    desiredRent: 0,
+    currentUser: null,
+    properties: []
 }
 
 const UPDATE_NAME = 'UPDATE_NAME';
@@ -21,6 +25,8 @@ const UPDATE_IMG = 'UPDATE_IMG';
 const UPDATE_LOAN = 'UPDATE_LOAN';
 const UPDATE_MORTGAGE = 'UPDATE_MORTGAGE';
 const UPDATE_DESIRED_RENT = 'UPDATE_DESIRED_RENT';
+const REGISTER = 'REGISTER';
+const LOGIN = 'LOGIN';
 
 function reducer(state = initialState, action) {
     // console.log(state);
@@ -45,6 +51,10 @@ function reducer(state = initialState, action) {
             return { ...state, monthlyMortgage: action.payload }
         case UPDATE_DESIRED_RENT:
             return { ...state, desiredRent: action.payload }
+        case REGISTER:
+            return { ...state, currentUser: action.payload, properties: [] }
+        case LOGIN:
+            return { ...state, currentUser: action.payload, properties: [] }
         default:
             return state
     }
@@ -119,5 +129,37 @@ export function updateDesired(value) {
     return {
         type: UPDATE_DESIRED_RENT,
         payload: value
+    }
+}
+
+export function register({ username, password }, history) {
+    let body = {
+        username: username,
+        password: password
+    }
+    const promise = axios.post('/api/register', body).then(res => {
+        history.push('/dashboard');
+        return res.data;
+    });
+
+    return {
+        type: REGISTER,
+        payload: promise
+    }
+}
+
+export function login({ username, password }, history) {
+    let body = {
+        username: username,
+        password: password
+    }
+    const promise = axios.post('/api/users', body).then(response => {
+        history.push('/dashboard');
+        return response.data;
+    });
+
+    return {
+        type: LOGIN,
+        payload: promise
     }
 }
