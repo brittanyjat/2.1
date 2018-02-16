@@ -28,9 +28,8 @@ app.use(session({
 
 // ===== properties ===== //
 
-app.post('/api/properties', checkAuth, properties.create);
-app.get('/api/properties', properties.getProperties)
-
+app.post('/api/properties', properties.create);
+app.get('/api/properties', properties.getProperties);
 
 // ===== users ===== //
 

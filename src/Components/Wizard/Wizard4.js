@@ -6,7 +6,7 @@ import { updateLoan, updateMortgage } from '../../reducer';
 
 class Wizard4 extends Component {
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         const { updateLoan, updateMortgage, loan, monthlyMortgage } = this.props;
         return (
             <div>

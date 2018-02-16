@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateDesired } from '../../reducer';
+import { updateDesired, clearState } from '../../reducer';
 import axios from 'axios';
 
 
@@ -10,33 +10,32 @@ class Wizard5 extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            desiredRent: this.props,
-            monthlyMortgage: this.props,
-            address: this.props,
-            city: this.props,
-            state: this.props,
-            zip: this.props,
-            name: this.props,
-            description: this.props,
-            imageUrl: this.props,
-            loan: this.props,
-        }
         this.handleComplete = this.handleComplete.bind(this);
     }
 
     handleComplete() {
-        const { history } = this.props;
-        const { desiredRent, monthlyMortgage, address, city, state, zip, name, description, imageUrl, loan } = this.state;
-        let body = { name, description, loan, monthlyMortgage, desiredRent, address, city, state, zip, imageUrl };
-
+        const { history, clearState } = this.props;
+        let body = {
+            name: this.props.name,
+            description: this.props.description,
+            loan: this.props.loan,
+            monthlyMortgage: this.props.monthlyMortgage,
+            desired: this.props.desired,
+            address: this.props.address,
+            city: this.props.city,
+            state: this.props.state,
+            zip: this.props.zip,
+            imageUrl: this.props.imageUrl
+        }
+        // console.log(body)
         axios.post('/api/properties', body).then(res => {
+            clearState();
             history.push('/dashboard');
         });
     }
 
     render() {
-        const { updateDesired } = this.props;
+        const { updateDesired, addProp, history } = this.props;
         console.log(this.props);
         return (
             <div>
@@ -44,14 +43,14 @@ class Wizard5 extends Component {
                 <div className='wizard-container'>
                     <div className='step-container'>
 
-                        <h3>Recommended Rent ${this.state.monthlyMortgage * 1.25}</h3>
+                        <h3>Recommended Rent ${this.props.monthlyMortgage * 1.25}</h3>
 
                         <div className='step2-container'>
                             <div><h1>Desired Rent</h1></div>
                             <input
                                 className='input-70'
                                 type='text'
-                                placeholder={this.state.desiredRent}
+                                placeholder={this.props.desiredRent}
                                 onChange={(e) => updateDesired(e.target.value)} />
                         </div>
 
@@ -60,7 +59,7 @@ class Wizard5 extends Component {
                             <button
                                 className='complete-button white-text filter'
                                 onClick={() => this.handleComplete()}
-                                >Complete</button>
+                            >Complete</button>
                         </div>
                     </div>
                 </div>
@@ -80,8 +79,8 @@ var mapStateToProps = (state) => {
         city: state.city,
         state: state.state,
         zip: state.zip,
-        imageUrl: state.imageUrl
+        imageUrl: state.imageUrl,
     }
 };
 
-export default connect(mapStateToProps, { updateDesired })(Wizard5);
+export default connect(mapStateToProps, { updateDesired, clearState })(Wizard5);

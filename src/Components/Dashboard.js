@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import axios from 'axios';
 
-class Dashboard extends Component {
+export default class Dashboard extends Component {
     constructor(props){
         super(props);
 
@@ -12,6 +11,8 @@ class Dashboard extends Component {
             properties: []
         };
     }
+
+
 
     componentDidMount(){
         axios.get('/api/properties').then(response => {
@@ -26,6 +27,8 @@ class Dashboard extends Component {
     render() {
         // console.log(this.props.currentUser)
         // console.log(this.state);
+
+
         return (
             <div id='dashboard-main'>
                 <div><Header /></div>
@@ -46,11 +49,3 @@ class Dashboard extends Component {
         )
     }
 }
-
-var mapStateToProps = (state) => {
-    return {
-        currentUser: state.currentUser
-    }
-}
-
-export default connect(mapStateToProps, {})(Dashboard);

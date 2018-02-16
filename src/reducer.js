@@ -10,9 +10,7 @@ const initialState = {
     state: '',
     zip: '',
     imageUrl: '',
-    desiredRent: 0,
-    currentUser: null,
-    properties: []
+    desiredRent: 0
 }
 
 const UPDATE_NAME = 'UPDATE_NAME';
@@ -27,6 +25,7 @@ const UPDATE_MORTGAGE = 'UPDATE_MORTGAGE';
 const UPDATE_DESIRED_RENT = 'UPDATE_DESIRED_RENT';
 const REGISTER = 'REGISTER';
 const LOGIN = 'LOGIN';
+const CLEAR_STATE = 'CLEAR_STATE';
 
 function reducer(state = initialState, action) {
     // console.log(state);
@@ -51,16 +50,21 @@ function reducer(state = initialState, action) {
             return { ...state, monthlyMortgage: action.payload }
         case UPDATE_DESIRED_RENT:
             return { ...state, desiredRent: action.payload }
-        case REGISTER:
-            return { ...state, currentUser: action.payload, properties: [] }
-        case LOGIN:
-            return { ...state, currentUser: action.payload, properties: [] }
+        case CLEAR_STATE:
+            return Object.assign({}, initialState);
         default:
             return state
     }
 }
 
 export default reducer;
+
+export function clearState(){
+    return {
+        type: CLEAR_STATE,
+        payload: null
+    }
+}
 
 export function updateName(value) {
     return {
