@@ -25,7 +25,8 @@ class Wizard5 extends Component {
             city: this.props.city,
             state: this.props.state,
             zip: this.props.zip,
-            imageUrl: this.props.imageUrl
+            imageUrl: this.props.imageUrl,
+            recommended: this.props.recommended
         }
         // console.log(body)
         axios.post('/api/properties', body).then(res => {
@@ -35,15 +36,15 @@ class Wizard5 extends Component {
     }
 
     render() {
-        const { updateDesired, addProp, history } = this.props;
-        console.log(this.props);
+        const { updateDesired } = this.props;
+        // console.log(this.props);
         return (
             <div>
                 <Header />
                 <div className='wizard-container'>
                     <div className='step-container'>
 
-                        <h3>Recommended Rent ${this.props.monthlyMortgage * 1.25}</h3>
+                        <h3>Recommended Rent ${this.props.recommended}</h3>
 
                         <div className='step2-container'>
                             <div><h1>Desired Rent</h1></div>
@@ -80,6 +81,7 @@ var mapStateToProps = (state) => {
         state: state.state,
         zip: state.zip,
         imageUrl: state.imageUrl,
+        recommended: state.recommended
     }
 };
 

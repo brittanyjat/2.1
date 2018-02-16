@@ -2,21 +2,33 @@ import React, { Component } from 'react';
 import Header from './Header';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PropList from './PropList';
 
 export default class Dashboard extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
         this.state = {
-            properties: []
+            properties: [],
+            test: [{
+                address:'1234 Dev Way',
+                city: 'Provo',
+                description: 'my very own home',
+                desired: '100.00',
+                imgurl: 'https://cdn.houseplans.com/product/o2d2ui14afb1sov3cnslpummre/w1024.jpg?v=15',
+                loan: '100000.00',
+                monthly: '999.00',
+                name: 'tiny house',
+                state: 'OR',
+                zip: '81243'
+            }]
         };
     }
 
 
-
-    componentDidMount(){
+    componentDidMount() {
         axios.get('/api/properties').then(response => {
-            // console.log(response);
+            console.log(response);
             this.setState({
                 properties: response.data
             });
@@ -25,8 +37,6 @@ export default class Dashboard extends Component {
 
 
     render() {
-        // console.log(this.props.currentUser)
-        // console.log(this.state);
 
 
         return (
@@ -43,6 +53,7 @@ export default class Dashboard extends Component {
                         <button className='filter-button filter'>Filter</button>
                         <button className='filter-button white-text reset'>Reset</button>
                         <hr />
+                        <PropList properties={this.state.properties} />
                     </div>
                 </div>
             </div>

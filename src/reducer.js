@@ -10,7 +10,8 @@ const initialState = {
     state: '',
     zip: '',
     imageUrl: '',
-    desiredRent: 0
+    desiredRent: 0,
+    recommended: null
 }
 
 const UPDATE_NAME = 'UPDATE_NAME';
@@ -47,7 +48,7 @@ function reducer(state = initialState, action) {
         case UPDATE_LOAN:
             return { ...state, loan: action.payload }
         case UPDATE_MORTGAGE:
-            return { ...state, monthlyMortgage: action.payload }
+            return { ...state, monthlyMortgage: action.payload, recommended: action.payload * 1.25 }
         case UPDATE_DESIRED_RENT:
             return { ...state, desiredRent: action.payload }
         case CLEAR_STATE:

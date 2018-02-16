@@ -7,6 +7,7 @@ CREATE TABLE properties (
     description VARCHAR(240),
     loan MONEY,
     monthly MONEY,
+    recommended MONEY,
     desired MONEY,
     address VARCHAR(100),
     city VARCHAR(100),
@@ -26,5 +27,5 @@ CREATE TABLE users (
 INSERT INTO users (username, password)
 VALUES ('CJ', 'chocolateisyummy')
 
-INSERT INTO properties(userId, name, description, loan, monthly, desired, address, city, state, zip, imgurl)
-VALUES (1, 'Tiny House', 'itty bitty little house', 5000, 500, 100, '123 Tiny Lane', 'Waldport', 'OR', '99999', 'https://pictures.escapia.com/BCHFRR/2685380953.jpg')
+INSERT INTO properties(userId, name, description, loan, monthly, recommended, desired, address, city, state, zip, imgurl)
+VALUES (1, 'Tiny House', 'itty bitty little house', 5000, 500, 625, 100, '123 Tiny Lane', 'Waldport', 'OR', '99999', 'https://pictures.escapia.com/BCHFRR/2685380953.jpg')

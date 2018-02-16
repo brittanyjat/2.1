@@ -23,7 +23,6 @@ app.use(session({
 }));
 
 
-
 //---------- ENDPOINTS ---------- //
 
 // ===== properties ===== //
