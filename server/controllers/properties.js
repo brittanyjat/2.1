@@ -1,12 +1,13 @@
 module.exports = {
     create: (req, res, next) => {
         const db = req.app.get('db');
-        const { name, description, loan, monthly, desired, address, city, state, zip, imgUrl } = req.body
+        const { name, description, loan, monthly, recommended, desired, address, city, state, zip, imgUrl } = req.body
+        // console.log(req.body)
 
         if (req.session.user) {
-            db.addProperty([req.session.user.id, name, description, loan, monthly, desired, address, city, state, zip, imgUrl])
-            .then(() => res.status(200).send())
-            .catch((err) => console.log(err))
+            db.addProperty([req.session.user.id, name, description, loan, monthly, recommended, desired, address, city, state, zip, imgUrl])
+                .then(() => res.status(200).send())
+                .catch((err) => console.log(err))
         } else {
             res.status(500).send('Better login before trying this again!')
         }
@@ -20,5 +21,13 @@ module.exports = {
         db.getProperties(id).then(response => {
             res.status(200).send(response);
         }).catch(err => res.status(500).send(err))
+    },
+
+    delete: (req, res, next) => {
+        const db = req.app.get('db');
+        const { id } = req.params;
+        db.deleteProperty(id)
+            .then(response => { res.status(200).send() })
+            .catch((err) => res.status(500).send(err));
     }
 };

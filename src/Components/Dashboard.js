@@ -28,7 +28,7 @@ export default class Dashboard extends Component {
 
     componentDidMount() {
         axios.get('/api/properties').then(response => {
-            console.log(response);
+            // console.log(response);
             this.setState({
                 properties: response.data
             });
@@ -53,7 +53,7 @@ export default class Dashboard extends Component {
                         <button className='filter-button filter'>Filter</button>
                         <button className='filter-button white-text reset'>Reset</button>
                         <hr />
-                        <PropList properties={this.state.properties} />
+                        <PropList properties={this.state.properties} history={this.props}/>
                     </div>
                 </div>
             </div>

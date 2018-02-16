@@ -19,14 +19,14 @@ class Wizard5 extends Component {
             name: this.props.name,
             description: this.props.description,
             loan: this.props.loan,
-            monthlyMortgage: this.props.monthlyMortgage,
+            monthly: this.props.monthlyMortgage,
+            recommended: this.props.recommended,
             desired: this.props.desired,
             address: this.props.address,
             city: this.props.city,
             state: this.props.state,
             zip: this.props.zip,
             imageUrl: this.props.imageUrl,
-            recommended: this.props.recommended
         }
         // console.log(body)
         axios.post('/api/properties', body).then(res => {
@@ -36,22 +36,22 @@ class Wizard5 extends Component {
     }
 
     render() {
-        const { updateDesired } = this.props;
-        // console.log(this.props);
+        const { updateDesired, recommended } = this.props;
+        console.log(this.props);
         return (
             <div>
                 <Header />
                 <div className='wizard-container'>
                     <div className='step-container'>
 
-                        <h3>Recommended Rent ${this.props.recommended}</h3>
+                        <h3>Recommended Rent ${recommended}</h3>
 
                         <div className='step2-container'>
                             <div><h1>Desired Rent</h1></div>
                             <input
                                 className='input-70'
                                 type='text'
-                                placeholder={this.props.desiredRent}
+                                value={this.props.desiredRent}
                                 onChange={(e) => updateDesired(e.target.value)} />
                         </div>
 

@@ -29,6 +29,7 @@ app.use(session({
 
 app.post('/api/properties', properties.create);
 app.get('/api/properties', properties.getProperties);
+app.delete('/api/properties/:id', properties.delete);
 
 // ===== users ===== //
 

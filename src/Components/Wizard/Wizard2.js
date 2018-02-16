@@ -20,7 +20,7 @@ class Wizard2 extends Component {
 
                             <input
                                 className='input-70'
-                                placeholder={address}
+                                value={address}
                                 type='text'
                                 onChange={(e) => updateAddress(e.target.value)} />
                         </div>
@@ -29,14 +29,14 @@ class Wizard2 extends Component {
                             <div><h1>City</h1></div>
 
                             <input
-                                placeholder={city}
+                                value={city}
                                 type='text'
                                 onChange={(e) => updateCity(e.target.value)} />
 
                             <div><h1>State</h1></div>
 
                             <input
-                                placeholder={state}
+                                value={state}
                                 type='text'
                                 onChange={(e) => updateState(e.target.value)} />
                         </div>
@@ -45,7 +45,7 @@ class Wizard2 extends Component {
                             <div><h1>Zip</h1></div>
                             
                             <input
-                                placeholder={zip}
+                                value={zip}
                                 type='text'
                                 onChange={(e) => updateZip(e.target.value)} />
                         </div>

@@ -14,7 +14,7 @@ class Wizard3 extends Component {
                 <div className='wizard-container'>
                     <div className='step-container'>
                         <div className='wizard-image-container'>
-                            <img src={this.props.imageUrl} className='wizard-image' alt='Preview'/>
+                            <img src={imageUrl} className='wizard-image' alt='Preview'/>
                         </div>
 
                         <div className='step2-container'>
@@ -22,7 +22,7 @@ class Wizard3 extends Component {
 
                             <input 
                                 className='input-70' 
-                                placeholder={imageUrl}
+                                value={imageUrl}
                                 type='text'
                                 onChange={(e) => updateImg(e.target.value)}/>
                         </div>

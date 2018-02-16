@@ -18,7 +18,7 @@ class Wizard1 extends Component {
 
                         <input
                             className='input-70'
-                            placeholder={name}
+                            value={name}
                             type='text'
                             onChange={(e) => updateName(e.target.value)}>
                         </input>
@@ -26,7 +26,7 @@ class Wizard1 extends Component {
                         <h1>Property Description</h1>
                         <input
                             className='input-70'
-                            placeholder={description}
+                            value={description}
                             type='text'
                             onChange={(e) => updateDescription(e.target.value)}>
                         </input>

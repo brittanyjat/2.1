@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import './PropList.css';
 import deleteIcon from '../delete_icon.png';
+import axios from 'axios';
 
 export default class PropList extends Component {
 
+    handleDelete(propertyid){
+        axios.delete(`/api/properties/${propertyid}`).then(response => {
+            this.props.history.history.go();
+        })
+    }
+
     render() {
+        console.log(this.props)
         const properties = this.props.properties;
 
         const propertyList = properties.map((home, i) => {
+            // console.log(home.id)
             return (
                 <div key={i} className='home-listing-container'>
 
@@ -31,7 +40,14 @@ export default class PropList extends Component {
                         <span>Zip: {home.zip}</span>
                     </div>
 
-                    <span><img src={deleteIcon} className='delete-icon' alt='x' /></span>
+                    <span>
+                        <img 
+                            src={deleteIcon} 
+                            className='delete-icon' 
+                            alt='x' 
+                            onClick={() => this.handleDelete(home.id)}
+                    />
+                    </span>
                 </div>
             )
         })
