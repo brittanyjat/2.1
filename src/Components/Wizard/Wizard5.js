@@ -26,7 +26,7 @@ class Wizard5 extends Component {
             city: this.props.city,
             state: this.props.state,
             zip: this.props.zip,
-            imageUrl: this.props.imageUrl,
+            imgurl: this.props.imageUrl,
         }
         // console.log(body)
         axios.post('/api/properties', body).then(res => {
