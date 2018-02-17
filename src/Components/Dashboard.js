@@ -11,7 +11,7 @@ export default class Dashboard extends Component {
         this.state = {
             properties: [],
             test: [{
-                address:'1234 Dev Way',
+                address: '1234 Dev Way',
                 city: 'Provo',
                 description: 'my very own home',
                 desired: '100.00',
@@ -21,15 +21,17 @@ export default class Dashboard extends Component {
                 name: 'tiny house',
                 state: 'OR',
                 zip: '81243'
-            }]
+            }],
         };
     }
 
 
     componentDidMount() {
         axios.get('/api/properties').then(response => {
-            // console.log(response);
             this.setState({
+                // properties:
+                //     this.state.applyFilter ? response.data.filter((function(property) { return (property.desired >= this.state.filterValue)}))
+                //                            : response.data 
                 properties: response.data
             });
         });
@@ -37,24 +39,19 @@ export default class Dashboard extends Component {
 
 
     render() {
-
+        // const { properties, filterValue } = this.state
+        // var filtered = properties.filter(function(property) {
+        //     return (property.desired >= filterValue )
+        // })
 
         return (
             <div id='dashboard-main'>
                 <div><Header /></div>
+
                 <div className='dashboard-container'>
+                
                     <Link to='/wizard/1'><button className='add-new-button font-20 bold'>Add new property</button></Link>
-                    <div className='filter-container'>
-                        <span className='font-20'>List properties with "desired rent" greater than: $</span>
-                        <input
-                            className='filter-input'
-                            placeholder='0'>
-                        </input>
-                        <button className='filter-button filter'>Filter</button>
-                        <button className='filter-button white-text reset'>Reset</button>
-                        <hr />
-                        <PropList properties={this.state.properties} history={this.props}/>
-                    </div>
+                    <PropList properties={this.state.properties} history={this.props} />
                 </div>
             </div>
         )
