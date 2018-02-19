@@ -22,36 +22,80 @@ export default class Dashboard extends Component {
                 state: 'OR',
                 zip: '81243'
             }],
+            applyFilter: false,
+            filterValue: 0
         };
+        this.handleFilter = this.handleFilter.bind(this);
+        this.filterValue = this.filterValue.bind(this);
+        this.reset = this.reset.bind(this);
     }
 
 
     componentDidMount() {
         axios.get('/api/properties').then(response => {
             this.setState({
-                // properties:
-                //     this.state.applyFilter ? response.data.filter((function(property) { return (property.desired >= this.state.filterValue)}))
-                //                            : response.data 
                 properties: response.data
             });
         });
     }
 
+    handleFilter() {
+        this.setState({
+            applyFilter: true
+        })
+    }
+
+    filterValue(value) {
+        this.setState({
+            filterValue: value
+        });
+    }
+
+    reset() {
+        this.setState({
+            filterValue: 0
+        })
+    }
 
     render() {
-        // const { properties, filterValue } = this.state
-        // var filtered = properties.filter(function(property) {
-        //     return (property.desired >= filterValue )
-        // })
+        const { properties, applyFilter, filterValue } = this.state;
+
+        const filteredProperties = properties.filter((function (x) { return (x.desired >= filterValue) }));
 
         return (
             <div id='dashboard-main'>
                 <div><Header /></div>
 
                 <div className='dashboard-container'>
-                
+
                     <Link to='/wizard/1'><button className='add-new-button font-20 bold'>Add new property</button></Link>
-                    <PropList properties={this.state.properties} history={this.props} />
+
+
+                    <div className='filter-container'>
+                        <span className='font-20'>List properties with "desired rent" greater than: $</span>
+                        <input
+                            className='filter-input'
+                            value={this.state.filterValue}
+                            onChange={(e) => this.filterValue(e.target.value)} >
+                        </input>
+
+                        <button
+                            className='filter-button filter'
+                            onClick={(e) => this.handleFilter()}>
+                            Filter
+                        </button>
+
+                        <button
+                            className='filter-button white-text reset'
+                            onClick={(e) => this.reset()}>
+                            Reset
+                        </button>
+                        <hr />
+                    </div>
+
+
+                    <PropList properties={applyFilter ? filteredProperties : properties} history={this.props} />
+
                 </div>
             </div>
         )

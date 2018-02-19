@@ -37,7 +37,7 @@ class Wizard5 extends Component {
 
     render() {
         const { updateDesired, recommended } = this.props;
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <div>
                 <Header />

@@ -4,18 +4,6 @@ import deleteIcon from '../delete_icon.png';
 import axios from 'axios';
 
 export default class PropList extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            applyFilter: false,
-            filterValue: 0
-        };
-
-        this.handleFilter = this.handleFilter.bind(this);
-        this.filterValue = this.filterValue.bind(this);
-        this.reset = this.reset.bind(this);
-    }
 
     handleDelete(propertyid) {
         axios.delete(`/api/properties/${propertyid}`).then(response => {
@@ -23,39 +11,15 @@ export default class PropList extends Component {
         })
     }
 
-    handleFilter() {
-        this.setState({
-            applyFilter: true
-        })
-    }
-
-    filterValue(value) {
-        this.setState({
-            filterValue: value
-        });
-    }
-
-    reset(){
-        this.setState({
-            filterValue: 0
-        })
-    }
-
     render() {
-        // console.log(this.props.properties)
         const properties = this.props.properties;
-        const { filterValue, applyFilter } = this.state;
 
-        const filteredProperties = properties.filter((function (x) { return (x.desired >= filterValue) }));
-
-        const newProperties = applyFilter ? properties : filteredProperties;
-
-        const propertyList = newProperties.map((home, i) => {
+        const propertyList = properties.map((home, i) => {
             return (
                 <div key={i} className='home-listing-container'>
 
                     <div className='home-listing-child'>
-                        <img src={home.imgurl} alt='listing' className='listing-img-container' />
+                        <img src={home.imgurl} alt='home listing' className='listing-img-container' />
                     </div>
 
                     <div className='home-listing-child'>
@@ -85,29 +49,9 @@ export default class PropList extends Component {
                 </div>
             )
         })
+
         return (
             <div>
-                <div className='filter-container'>
-                    <span className='font-20'>List properties with "desired rent" greater than: $</span>
-                    <input
-                        className='filter-input'
-                        value={this.state.filterValue}
-                        onChange={(e) => this.filterValue(e.target.value)} >
-                    </input>
-
-                    <button
-                        className='filter-button filter'
-                        onClick={(e) => this.handleFilter()}>
-                        Filter
-                        </button>
-
-                    <button
-                        className='filter-button white-text reset'
-                        onClick={(e) => this.reset()}>
-                        Reset
-                        </button>
-                    <hr />
-                </div>
                 <div>
                     <h1>Home Listings</h1>
                     {propertyList}
