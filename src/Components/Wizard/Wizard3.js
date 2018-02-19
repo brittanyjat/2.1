@@ -23,7 +23,7 @@ class Wizard3 extends Component {
                             <div><h1>Image URL</h1></div>
 
                             <input 
-                                className='input-70' 
+                                className='input-70 font-15' 
                                 value={imageUrl}
                                 type='text'
                                 onChange={(e) => updateImg(e.target.value)}/>

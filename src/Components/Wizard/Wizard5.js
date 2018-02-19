@@ -50,7 +50,7 @@ class Wizard5 extends Component {
                         <div className='step2-container'>
                             <div><h1>Desired Rent</h1></div>
                             <input
-                                className='input-70'
+                                className='input-70 font-15'
                                 type='text'
                                 value={this.props.desiredRent}
                                 onChange={(e) => updateDesired(e.target.value)} />

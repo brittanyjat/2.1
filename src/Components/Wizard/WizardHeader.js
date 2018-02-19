@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
+import active from '../../assets/step_active.png';
+import completed from '../../assets/step_completed.png';
+import inactive from '../../assets/step_inactive.png';
 
-class WizardHeader extends Component{
+class WizardHeader extends Component {
 
-    render(){
-        console.log(this.props)
+    render() {
+        // console.log(this.props)
         const { id } = this.props;
         return (
             <div id='wizard-header'>
-                <div>
+                <div className='add-cancel-container bold'>
                     <span className='add-new-title'>Add new listing</span>
-                    <span className='cancel-button'>Cancel</span>
+                    <button className='cancel-button bold'>Cancel</button>
                 </div>
-                <div>
+                <div className='step-header-container'>
                     <span className='step-name-indicator'>Step {id}</span>
-                    <div className='step-image-indecator'>
-
+                    <div className='step-image-indicator'>
+                        <img src={id === '1' ? active : completed} alt='step-indicator'/>
+                        <img src={id === '1' ? inactive : id === '2' ? active : completed} alt='step-indicator'/>
+                        <img src={id === '1' || id === '2' ? inactive : id === '3' ? active : completed} alt ='step-indicator'/>
+                        <img src={id === '1' || id === '2' || id === '3' ? inactive : id === '4' ? active : completed} alt='step-indicator'/>
+                        <img src={id === '1' || id === '2' || id === '3' || id === '4' ? inactive : id === '5' ? active : completed} alt='step-indicator'/>
                     </div>
                 </div>
             </div>

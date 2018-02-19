@@ -19,7 +19,7 @@ class Wizard4 extends Component {
                         <div className='step2-container'>
                             <div><h1>Loan Amount</h1></div>
                             <input
-                                className='input-70'
+                                className='input-70 font-15'
                                 type='text'
                                 placeholder={loan}
                                 onChange={(e) => updateLoan(e.target.value)} />
@@ -28,7 +28,7 @@ class Wizard4 extends Component {
                         <div className='step2-container'>
                             <div><h1>Monthly Mortgage</h1></div>
                             <input
-                                className='input-70'
+                                className='input-70 font-15'
                                 type='text'
                                 placeholder={monthlyMortgage}
                                 onChange={(e) => updateMortgage(e.target.value)} />

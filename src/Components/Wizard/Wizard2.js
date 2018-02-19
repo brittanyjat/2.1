@@ -21,7 +21,7 @@ class Wizard2 extends Component {
                             <div><h1>Address</h1></div>
 
                             <input
-                                className='input-70'
+                                className='input-70 font-15'
                                 value={address}
                                 type='text'
                                 onChange={(e) => updateAddress(e.target.value)} />
@@ -31,6 +31,7 @@ class Wizard2 extends Component {
                             <div><h1>City</h1></div>
 
                             <input
+                                className='font-15'
                                 value={city}
                                 type='text'
                                 onChange={(e) => updateCity(e.target.value)} />
@@ -38,6 +39,7 @@ class Wizard2 extends Component {
                             <div><h1>State</h1></div>
 
                             <input
+                                className='font-15'
                                 value={state}
                                 type='text'
                                 onChange={(e) => updateState(e.target.value)} />
@@ -48,6 +50,7 @@ class Wizard2 extends Component {
                             
                             <input
                                 value={zip}
+                                className='font-15'
                                 type='text'
                                 onChange={(e) => updateZip(e.target.value)} />
                         </div>
