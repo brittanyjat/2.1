@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateDesired, clearState } from '../../reducer';
+import { updateDesired, clearState } from '../../redux/reducer';
 import axios from 'axios';
-
+import WizardHeader from './WizardHeader';
 
 class Wizard5 extends Component {
     constructor(props) {
@@ -42,6 +42,7 @@ class Wizard5 extends Component {
             <div>
                 <Header />
                 <div className='wizard-container'>
+                <WizardHeader id='5'/>
                     <div className='step-container'>
 
                         <h3>Recommended Rent ${recommended}</h3>

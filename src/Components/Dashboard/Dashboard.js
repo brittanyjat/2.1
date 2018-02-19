@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Header from '../Header';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PropList from './PropList';
@@ -25,11 +25,7 @@ export default class Dashboard extends Component {
             applyFilter: false,
             filterValue: 0
         };
-        this.handleFilter = this.handleFilter.bind(this);
-        this.filterValue = this.filterValue.bind(this);
-        this.reset = this.reset.bind(this);
     }
-
 
     componentDidMount() {
         axios.get('/api/properties').then(response => {
@@ -37,24 +33,6 @@ export default class Dashboard extends Component {
                 properties: response.data
             });
         });
-    }
-
-    handleFilter() {
-        this.setState({
-            applyFilter: true
-        })
-    }
-
-    filterValue(value) {
-        this.setState({
-            filterValue: value
-        });
-    }
-
-    reset() {
-        this.setState({
-            filterValue: 0
-        })
     }
 
     render() {
@@ -75,19 +53,20 @@ export default class Dashboard extends Component {
                         <span className='font-20'>List properties with "desired rent" greater than: $</span>
                         <input
                             className='filter-input'
+                            ref='filter'
                             value={this.state.filterValue}
-                            onChange={(e) => this.filterValue(e.target.value)} >
+                            onChange={() => this.setState({filterValue: this.refs.filter.value})} >
                         </input>
 
                         <button
                             className='filter-button filter'
-                            onClick={(e) => this.handleFilter()}>
+                            onClick={() => this.setState({applyFilter: true})}>
                             Filter
                         </button>
 
                         <button
                             className='filter-button white-text reset'
-                            onClick={(e) => this.reset()}>
+                            onClick={() => this.setState({filterValue: 0})}>
                             Reset
                         </button>
                         <hr />

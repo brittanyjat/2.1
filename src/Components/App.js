@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import Home from './Components/Home';
-import Dashboard from './Components/Dashboard';
-import Wizard1 from './Components/Wizard/Wizard1';
-import Wizard2 from './Components/Wizard/Wizard2';
-import Wizard3 from './Components/Wizard/Wizard3';
-import Wizard4 from './Components/Wizard/Wizard4';
-import Wizard5 from './Components/Wizard/Wizard5';
+import Home from './Home';
+import Dashboard from './Dashboard/Dashboard';
+import Wizard1 from './Wizard/Wizard1';
+import Wizard2 from './Wizard/Wizard2';
+import Wizard3 from './Wizard/Wizard3';
+import Wizard4 from './Wizard/Wizard4'
+import Wizard5 from './Wizard/Wizard5';
 
 class App extends Component {
   render() {

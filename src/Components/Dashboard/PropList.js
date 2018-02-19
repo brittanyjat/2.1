@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './PropList.css';
-import deleteIcon from '../delete_icon.png';
+import deleteIcon from '../../assets/delete_icon.png';
 import axios from 'axios';
 
 export default class PropList extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import authLogo from '../auth_logo.png';
+import authLogo from '../assets/auth_logo.png';
 import { connect } from 'react-redux';
-import { register, login } from '../reducer';
+import { register, login } from '../redux/reducer';
 
 class Home extends Component {
     constructor() {

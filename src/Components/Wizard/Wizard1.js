@@ -3,7 +3,8 @@ import './Wizard.css';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateName, updateDescription } from '../../reducer';
+import { updateName, updateDescription } from '../../redux/reducer';
+import WizardHeader from './WizardHeader';
 
 class Wizard1 extends Component {
     render() {
@@ -13,6 +14,7 @@ class Wizard1 extends Component {
             <div>
                 <Header />
                 <div className='wizard-container'>
+                <WizardHeader id='1'/>
                     <div className='step-container'>
                         <h1>Property Name</h1>
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import headerLogo from '../header_logo.png';
+import headerLogo from '../assets/header_logo.png';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 

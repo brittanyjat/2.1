@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateAddress, updateCity, updateState, updateZip } from '../../reducer';
+import { updateAddress, updateCity, updateState, updateZip } from '../../redux/reducer';
+import WizardHeader from './WizardHeader';
 
 
 class Wizard2 extends Component {
@@ -13,6 +14,7 @@ class Wizard2 extends Component {
             <div>
                 <Header />
                 <div className='wizard-container'>
+                <WizardHeader id='2'/>
                     <div className='step-container'>
 
                         <div className='step2-container'>

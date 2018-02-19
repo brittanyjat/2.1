@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateLoan, updateMortgage } from '../../reducer';
+import { updateLoan, updateMortgage } from '../../redux/reducer';
+import WizardHeader from './WizardHeader';
 
 class Wizard4 extends Component {
     render() {
@@ -12,6 +13,7 @@ class Wizard4 extends Component {
             <div>
                 <Header />
                 <div className='wizard-container'>
+                <WizardHeader id='4'/>
                     <div className='step-container'>
 
                         <div className='step2-container'>

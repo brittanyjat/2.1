@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
 import {connect }  from 'react-redux';
-import {updateImg} from '../../reducer';
+import {updateImg} from '../../redux/reducer';
+import WizardHeader from './WizardHeader';
 
 class Wizard3 extends Component {
     render() {
@@ -12,6 +13,7 @@ class Wizard3 extends Component {
             <div>
                 <Header />
                 <div className='wizard-container'>
+                <WizardHeader id='3'/>
                     <div className='step-container'>
                         <div className='wizard-image-container'>
                             <img src={imageUrl} className='wizard-image' alt='Preview'/>
