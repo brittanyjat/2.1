@@ -10,13 +10,17 @@ class Wizard1 extends Component {
     render() {
         // console.log(this.props)
         const { updateName, updateDescription, name, description } = this.props;
+
         return (
             <div>
                 <Header />
+
                 <div className='wizard-container'>
-                <WizardHeader id='1'/>
+
+                    <WizardHeader id='1' />
+
                     <div className='step-container'>
-                        <h1>Property Name</h1>
+                        <div className='step-child'><h1>Property Name</h1></div>
 
                         <input
                             className='input-70 font-15'
@@ -25,18 +29,23 @@ class Wizard1 extends Component {
                             onChange={(e) => updateName(e.target.value)}>
                         </input>
 
-                        <h1>Property Description</h1>
+                        <div className='step-child'><h1>Property Description</h1></div>
+
                         <input
                             className='input-70 font-15 height-100'
                             value={description}
                             type='text'
                             onChange={(e) => updateDescription(e.target.value)}>
                         </input>
+
+                        <div className='step1-button-container'>
+                            <Link to='/wizard/2'>
+                                <button className='step-button white-text'>Next Step</button>
+                            </Link>
+                        </div>
                     </div>
-                    <div className='step1-button-container'>
-                        <Link to='/wizard/2'><button
-                            className='step-button white-text'>Next Step</button></Link>
-                    </div>
+
+
                 </div>
             </div>
         )

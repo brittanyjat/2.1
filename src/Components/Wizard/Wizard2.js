@@ -14,40 +14,42 @@ class Wizard2 extends Component {
             <div>
                 <Header />
                 <div className='wizard-container'>
-                <WizardHeader id='2'/>
+                    <WizardHeader id='2' />
                     <div className='step-container'>
 
-                        <div className='step2-container'>
-                            <div><h1>Address</h1></div>
+                        <div className='step-child'><h1>Address</h1></div>
 
-                            <input
-                                className='input-70 font-15'
-                                value={address}
-                                type='text'
-                                onChange={(e) => updateAddress(e.target.value)} />
+                        <input
+                            className='input-70 font-15'
+                            value={address}
+                            type='text'
+                            onChange={(e) => updateAddress(e.target.value)} />
+
+
+                        <div className='step-child city-state-container'>
+                            <div className='city-container'>
+                                <h1>City</h1>
+
+                                <input
+                                    className='input-70 font-15'
+                                    value={city}
+                                    type='text'
+                                    onChange={(e) => updateCity(e.target.value)} />
+                            </div>
+                            <div className='city-container'>
+                                <h1>State</h1>
+
+                                <input
+                                    className='input-70 font-15'
+                                    value={state}
+                                    type='text'
+                                    onChange={(e) => updateState(e.target.value)} />
+                            </div>
                         </div>
 
-                        <div className='step2-container'>
-                            <div><h1>City</h1></div>
+                        <div className='step-child'>
+                            <h1>Zip</h1>
 
-                            <input
-                                className='font-15'
-                                value={city}
-                                type='text'
-                                onChange={(e) => updateCity(e.target.value)} />
-
-                            <div><h1>State</h1></div>
-
-                            <input
-                                className='font-15'
-                                value={state}
-                                type='text'
-                                onChange={(e) => updateState(e.target.value)} />
-                        </div>
-
-                        <div className='step2-container'>
-                            <div><h1>Zip</h1></div>
-                            
                             <input
                                 value={zip}
                                 className='font-15'

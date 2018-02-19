@@ -41,27 +41,30 @@ class Wizard5 extends Component {
         return (
             <div>
                 <Header />
+
                 <div className='wizard-container'>
-                <WizardHeader id='5'/>
+
+                    <WizardHeader id='5' />
+
                     <div className='step-container'>
 
                         <h3>Recommended Rent ${recommended}</h3>
 
-                        <div className='step2-container'>
-                            <div><h1>Desired Rent</h1></div>
-                            <input
-                                className='input-70 font-15'
-                                type='text'
-                                value={this.props.desiredRent}
-                                onChange={(e) => updateDesired(e.target.value)} />
-                        </div>
+                        <div className='step-child'><h1>Desired Rent</h1></div>
+
+                        <input
+                            className='input-70 font-15'
+                            type='text'
+                            value={this.props.desiredRent}
+                            onChange={(e) => updateDesired(e.target.value)} />
 
                         <div className='step-button-container'>
                             <Link to='/wizard/4'><button className='step-button white-text'>Previous Step</button></Link>
                             <button
-                                className='complete-button white-text filter'
-                                onClick={() => this.handleComplete()}
-                            >Complete</button>
+                                className='complete-button filter'
+                                onClick={() => this.handleComplete()}>
+                                Complete
+                            </button>
                         </div>
                     </div>
                 </div>

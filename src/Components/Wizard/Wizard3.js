@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
-import {connect }  from 'react-redux';
-import {updateImg} from '../../redux/reducer';
+import { connect } from 'react-redux';
+import { updateImg } from '../../redux/reducer';
 import WizardHeader from './WizardHeader';
 
 class Wizard3 extends Component {
@@ -12,22 +12,25 @@ class Wizard3 extends Component {
         return (
             <div>
                 <Header />
+
                 <div className='wizard-container'>
-                <WizardHeader id='3'/>
+
+                    <WizardHeader id='3' />
+
                     <div className='step-container'>
+
                         <div className='wizard-image-container'>
-                            <img src={imageUrl} className='wizard-image' alt='Preview'/>
+                            <img src={imageUrl} className='wizard-image' alt='Preview' />
                         </div>
 
-                        <div className='step2-container'>
-                            <div><h1>Image URL</h1></div>
+                        <div className='step-child'><h1>Image URL</h1></div>
 
-                            <input 
-                                className='input-70 font-15' 
-                                value={imageUrl}
-                                type='text'
-                                onChange={(e) => updateImg(e.target.value)}/>
-                        </div>
+                        <input
+                            className='input-70 font-15'
+                            value={imageUrl}
+                            type='text'
+                            onChange={(e) => updateImg(e.target.value)} />
+
 
                         <div className='step-button-container'>
                             <Link to='/wizard/2'><button className='step-button white-text'>Previous Step</button></Link>
@@ -42,8 +45,8 @@ class Wizard3 extends Component {
 
 var mapStateToProps = (state) => {
     return {
-        imageUrl : state.imageUrl
+        imageUrl: state.imageUrl
     }
 };
 
-export default connect(mapStateToProps, {updateImg})(Wizard3);
+export default connect(mapStateToProps, { updateImg })(Wizard3);
