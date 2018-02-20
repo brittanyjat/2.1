@@ -1,19 +1,28 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
 import active from '../../assets/step_active.png';
 import completed from '../../assets/step_completed.png';
 import inactive from '../../assets/step_inactive.png';
+import { connect } from 'react-redux';
+import { clearState } from '../../redux/reducer';
+import { withRouter } from 'react-router';
 
 class WizardHeader extends Component {
 
     render() {
         // console.log(this.props)
+        const { clearState, history } = this.props;
         const { id } = this.props;
         return (
             <div id='wizard-header'>
                 <div className='add-cancel-container bold'>
                     <span className='add-new-title'>Add new listing</span>
-                    <button className='cancel-button bold'>Cancel</button>
+                    <button 
+                        className='cancel-button bold'
+                        onClick={() => { 
+                            clearState(); 
+                            history.push('/dashboard'); }} >
+                        Cancel
+                    </button>
                 </div>
                 <div className='step-header-container'>
                     <span className='step-name-indicator'>Step {id}</span>
@@ -30,4 +39,8 @@ class WizardHeader extends Component {
     }
 }
 
-export default withRouter(WizardHeader);
+const mapDispatchToProps = {
+    clearState
+};
+
+export default withRouter(connect(null, mapDispatchToProps)(WizardHeader));

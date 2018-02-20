@@ -52,7 +52,7 @@ function reducer(state = initialState, action) {
         case UPDATE_DESIRED_RENT:
             return { ...state, desiredRent: action.payload }
         case CLEAR_STATE:
-            return Object.assign({}, initialState);
+            return Object.assign({}, state, initialState);
         default:
             return state
     }
@@ -62,8 +62,7 @@ export default reducer;
 
 export function clearState(){
     return {
-        type: CLEAR_STATE,
-        payload: null
+        type: CLEAR_STATE
     }
 }
 
