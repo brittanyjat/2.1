@@ -22,6 +22,8 @@ app.use(session({
     saveUninitialized: false
 }));
 
+app.use(checkAuth);
+
 
 //---------- ENDPOINTS ---------- //
 

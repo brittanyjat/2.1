@@ -1,8 +1,11 @@
-module.exports = function (req, res, next ){
-    const {session } = req;
-    if( !session.user){
-        res.status(500).send('Please login to see how awesome this app is!')
-    } else {
-        next();
+module.exports = function (req, res, next) {
+    const { session } = req;
+    console.log(session)
+    if (!session.user) {
+        session.user = {
+            id: null,
+            uername: null,
+        }
     }
+    next();
 }
