@@ -47,6 +47,7 @@ input {
   margin-bottom: 50px;
 }
 
+/* CORE 22C-3 && 22C-2 */
 .auth-button-container > button {
   width: 130px;
   height: 40px;
@@ -55,6 +56,7 @@ input {
   cursor: pointer;
 }
 
+/* CORE 26L */
 .auth-button:nth-child(1){
   background-color: #8aea92;
   margin-right: 30px;

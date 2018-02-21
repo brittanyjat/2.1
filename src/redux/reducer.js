@@ -14,7 +14,7 @@ const initialState = {
     recommended: null
 }
 
-const UPDATE_NAME = 'UPDATE_NAME';
+const UPDATE_NAME = 'UPDATE_NAME'; //----------> SIMULATION2 43E ACTIONS
 const UPDATE_DESCRIPTION = 'UPDATE_DESCRIPTION';
 const UPDATE_ADDRESS = 'UPDATE_ADDRESS';
 const UPDATE_CITY = 'UPDATE_CITY';
@@ -59,6 +59,8 @@ function reducer(state = initialState, action) {
 }
 
 export default reducer;
+
+// SIMULATION2 43F ACTION BUILDERS BELOW 
 
 export function clearState(){
     return {

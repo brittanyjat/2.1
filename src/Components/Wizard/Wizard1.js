@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Wizard.css';
 import Header from '../Header';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'; // ----------> SIMULATION 2 43C imported here and connected at export at the end of component :)
 import { updateName, updateDescription } from '../../redux/reducer';
 import WizardHeader from './WizardHeader';
 
@@ -52,11 +52,13 @@ class Wizard1 extends Component {
     }
 }
 
-var mapStateToProps = (state) => {
+var mapStateToProps = (state) => { //----------> SIMULATION2 43H MAP STATE TO PROPS && 43G SHARE STATE. State is now available as props for this component.
     return {
         name: state.name,
         description: state.description
     };
 }
 
+// SIMULATION2 43J DISPATCH TO PROPS. Below is the React way to dispatch to props by putting it as the
+// second paramater in the connect function. The alternative is this.props.dispatch(updateName) etc.
 export default connect(mapStateToProps, { updateName, updateDescription })(Wizard1);

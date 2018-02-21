@@ -55,18 +55,18 @@ export default class Dashboard extends Component {
                             className='filter-input'
                             ref='filter'
                             value={this.state.filterValue}
-                            onChange={() => this.setState({filterValue: this.refs.filter.value})} >
+                            onChange={() => this.setState({ filterValue: this.refs.filter.value })} >
                         </input>
 
                         <button
                             className='filter-button filter'
-                            onClick={() => this.setState({applyFilter: true})}>
+                            onClick={() => this.setState({ applyFilter: true })}>
                             Filter
                         </button>
 
                         <button
                             className='filter-button white-text reset'
-                            onClick={() => this.setState({filterValue: 0})}>
+                            onClick={() => this.setState({ filterValue: 0 })}>
                             Reset
                         </button>
                         <hr />

@@ -2,16 +2,10 @@ module.exports = {
     create: (req, res, next) => {
         const db = req.app.get('db');
         const { name, description, loan, monthly, recommended, desired, address, city, state, zip, imgurl } = req.body
-        // console.log(req.body)
-
-        if (req.session.user) {
-            db.addProperty([req.session.user.id, name, description, loan, monthly, recommended, desired, address, city, state, zip, imgurl])
-                .then(() => res.status(200).send())
-                .catch((err) => res.status(500).send(err))
-        } else {
-            res.status(500).send('Better login before trying this again!')
-        }
-
+        // console.log(req.session)
+        db.addProperty([req.session.user.id, name, description, loan, monthly, recommended, desired, address, city, state, zip, imgurl])
+            .then(() => res.status(200).send())
+            .catch((err) => res.status(500).send(err))
     },
 
     getProperties: (req, res, next) => {

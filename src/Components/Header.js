@@ -7,7 +7,10 @@ class Header extends Component {
     
     logout() {
         const { history } = this.props;
-        axios.post('/api/logout').then(history.push('/'));
+        axios.post('/api/logout').then(response => {
+            // console.log(response);
+            history.push('/');
+        });
     }
 
     render() {

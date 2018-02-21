@@ -14,14 +14,17 @@ CREATE TABLE properties (
     state VARCHAR(15),
     zip VARCHAR(10),
     imgUrl VARCHAR(240),
+    ---------> SIMULATION2 67E FOREIGN KEY
     FOREIGN KEY ( userId ) REFERENCES users(UserID)
 )
 
 CREATE TABLE users (
+    ----------> SIMULATION 68E ONE-TO-MANY. userId is related to property table with multiple properties.
     userId SERIAL PRIMARY KEY,
     username VARCHAR(50),
-    password VARCHAR(50)
-)
+    password VARCHAR(50),
+    UNIQUE (username) ----------> SIMULATION2 67G UNIQUE KEYS
+);
 
 
 INSERT INTO users (username, password)

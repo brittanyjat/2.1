@@ -5,14 +5,13 @@ module.exports = {
         const { session } = req;
 
         db.login([username, password]).then(response => {
+            console.log(response)
             if (response.length !== 0) {
                 const user = response[0];
 
-                session.user = {
-                    id: user.userid,
-                    username: user.username
+                session.user = { //----------> SIMULATION2 75F. Storing user data from table onto sessions.
+                    id: user.userid
                 }
-                // console.log(session)
                 res.status(200).send(session.user);
             } else {
                 res.status(500).send('bad username and/or password')
@@ -29,8 +28,7 @@ module.exports = {
             const user = response[0]
 
             session.user = {
-                id: user.userid,
-                username: user.username
+                id: user.userid
             }
 
             res.status(200).send(session.user);
@@ -40,7 +38,6 @@ module.exports = {
 
     logout: (req, res, next) => {
         req.session.destroy();
-        // console.log(req.session)
-        res.status(200).send('Session ended. Come back soon!')
+        res.status(200).send('Session ended!')
     }
 }

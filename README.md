@@ -1,4 +1,4 @@
-# Simulation 2 - 'Houser'
+# Simulation 2 - Houser
 
 In this project I will be demonstrating the skills I have learned at DevMountain so far. Specifically:
 
@@ -13,4 +13,4 @@ In this project I will be demonstrating the skills I have learned at DevMountain
     * Middleware
 * Postgres
 
-## February 20, 2018
+<!-- ## February 20, 2018 -->
