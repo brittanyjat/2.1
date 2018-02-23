@@ -27,11 +27,11 @@ class WizardHeader extends Component {
                 <div className='step-header-container'>
                     <span className='step-name-indicator'>Step {id}</span>
                     <div className='step-image-indicator'>
-                        <img src={id === '1' ? active : completed} alt='step-indicator'/>
-                        <img src={id === '1' ? inactive : id === '2' ? active : completed} alt='step-indicator'/>
-                        <img src={id === '1' || id === '2' ? inactive : id === '3' ? active : completed} alt ='step-indicator'/>
-                        <img src={id === '1' || id === '2' || id === '3' ? inactive : id === '4' ? active : completed} alt='step-indicator'/>
-                        <img src={id === '1' || id === '2' || id === '3' || id === '4' ? inactive : id === '5' ? active : completed} alt='step-indicator'/>
+                        <img src={id === 1 ? active : completed} alt='step-indicator'/>
+                        <img src={id < 2 ? inactive : id === 2 ? active : completed} alt='step-indicator'/>
+                        <img src={id < 3 ? inactive : id === 3 ? active : completed} alt ='step-indicator'/>
+                        <img src={id < 4 ? inactive : id === 4 ? active : completed} alt='step-indicator'/>
+                        <img src={id < 5 ? inactive : id === 5 ? active : completed} alt='step-indicator'/>
                     </div>
                 </div>
             </div>

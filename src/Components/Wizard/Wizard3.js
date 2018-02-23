@@ -15,7 +15,7 @@ class Wizard3 extends Component {
 
                 <div className='wizard-container'>
 
-                    <WizardHeader id='3' />
+                    <WizardHeader id={3} />
 
                     <div className='step-container'>
 
